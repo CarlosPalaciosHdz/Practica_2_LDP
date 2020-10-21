@@ -2,18 +2,33 @@
 ;; Ejercicio 1
 ;; Función que recibe n, r y devuelve el conjunto con los primeros r múltiplos de n.
 ;; multiplos: number number -> (listof number)
-;;(define (multiplos n r)...)
+;;(define (multiplos n r)
+(for/list ((i r)) (* n (+ i 1)))
+)
 
 ;; Ejercicio 2
 ;; Predicado que nos dice si un número m es divisor de otro número n.
 ;; Si el parámetro recibido es cero, se devuelve un error.
 ;; divisor?: number number -> number
-;;(define (divisor? m n)...)
+;;(define (divisor? m n)
+      (if (= m 0)
+      (error "el cero no es divisor de nadie")
+          (if (= (modulo r m) 0)
+             #t
+             #f)
+        )
+     )
 
 ;; Ejercicio 3
 ;; Función que nos da el una lista de divisores de un número pasado como parámetro
 ;; divisores: number -> (listof number)
-;;(define (divisores n)...)
+;;(define (divisores n)
+    (if (= n 0)
+    (error "El cero no tiene divisores")
+    (filter (lambda (x) (divisor? x n)) (for/list ((i n)) (+ i 1)))
+    )
+
+   )
 
 ;; Ejercicio 4
 ;; Función que recibe un elemento a, una lista l y decide si a pertenece a l.
@@ -66,36 +81,3 @@
 ;(define (masRepetido lista)
 
 
-(define a (Punto 2 2))
-(define b (Punto 2 8))
-;;(define c (Circulo (Punto 0 0) 1))
-
-
-;;(test (perimetro c) 6.283185307179586)
-;;(test (distancia a b) 6)
-;;(test (punto-medio a b) (Punto 2 5))
-
-
-(define l (list 13 13 3411))
-
-;;(map (λ (x) (* (- 1) (/ x 2))) l)
-;;(map not l)
-;;((λ (b x y ) (if b x y)) #f 2 3)
-
-(define-type Persona
-  [Alumno (nombre string?) (edad number?)]
-  [Ayudante (nombre string?) (noDeCuenta number?) (correo string?)]
-  )
-;; Persona -> string
-
-(define (getCorreo p) ;; casa de patrones figuras
- (type-case Persona p
-   [Alumno (n e) (error "los alumno no crreo")]
-   [Ayudante (n nc c) c]
-   )
-)
-
-;;(define-type punto
-;;  [Punto (x number?)(y number?)]
- ;; )
-(define l1 (list "carlos" 22))
