@@ -31,9 +31,17 @@
    )
 
 ;; Ejercicio 4
-;; Función que recibe un elemento a, una lista l y decide si a pertenece a l.
-;; pertenece: a (listof a) -> boolean
-;; (define (pertenece? a l)
+;; Función que recibe un elemento e, una lista l y decide si a pertenece a l.
+;; pertenece: e (listof e) -> boolean
+ (define (pertenece? e l)
+      (if (equal? l empty)
+      #f
+            (if (= (car l) e)
+            #t
+            (pertenece? e (cdr l))
+            )
+      )
+ )
      
 
 ;; Ejercicio 5
