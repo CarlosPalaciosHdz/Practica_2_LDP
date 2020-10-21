@@ -57,13 +57,33 @@
 ;; Funcion que nos permite calcular el punto equidistante entre dos puntos.
 ;; Si alguno de los dos parámetros recibidos no es un punto, lanza un error
 ;; punto-medio: Punto Punto -> Punto
-;;(define (punto-medio p q) ...)
+(define (punto-medio p q) 
+      (if (and (Punto? p) (Punto? q))
+            (let ([x1 (Punto-x p)]
+                  [x2 (Punto-x q)]
+                  [y1 (Punto-y p)]
+                  [y2 (Punto-y q)])
+               (Punto (/ (+ x1 x2) 2) (/ (+ y1 y2) 2))   
+            )
+         (error "Uno de los parametros no es de tipo punto")
+      )
+)
 
 ;; Ejercicio 7
 ;; Funcion que nos permite calcular la distancia entre dos puntos.
 ;; Si alguno de los dos parámetros recibidos no es un punto, lanza un error
 ;; distancia: Punto Punto -> number
-;;(define (distancia p q)...)
+(define (distancia p q)
+      (if (and (Punto? p) (Punto? q))
+            (let ([x1 (Punto-x p)]
+                  [x2 (Punto-x q)]
+                  [y1 (Punto-y p)]
+                  [y2 (Punto-y q)])
+               (sqrt (+ (expt (- x2 x1) 2) (expt (- y2 y1) 2)))   
+            )
+         (error "Uno de los parametros no es de tipo punto")
+      )
+)
 
 ;; Ejercicio 8
 ;; Definición del tipo abstracto de datos Figura
