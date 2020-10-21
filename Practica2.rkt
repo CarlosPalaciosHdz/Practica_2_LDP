@@ -2,7 +2,7 @@
 ;; Ejercicio 1
 ;; Función que recibe n, r y devuelve el conjunto con los primeros r múltiplos de n.
 ;; multiplos: number number -> (listof number)
-;;(define (multiplos n r)
+(define (multiplos n r)
 (for/list ((i r)) (* n (+ i 1)))
 )
 
@@ -10,7 +10,7 @@
 ;; Predicado que nos dice si un número m es divisor de otro número n.
 ;; Si el parámetro recibido es cero, se devuelve un error.
 ;; divisor?: number number -> number
-;;(define (divisor? m n)
+(define (divisor? m n)
       (if (= m 0)
       (error "el cero no es divisor de nadie")
           (if (= (modulo r m) 0)
@@ -22,7 +22,7 @@
 ;; Ejercicio 3
 ;; Función que nos da el una lista de divisores de un número pasado como parámetro
 ;; divisores: number -> (listof number)
-;;(define (divisores n)
+(define (divisores n)
     (if (= n 0)
     (error "El cero no tiene divisores")
     (filter (lambda (x) (divisor? x n)) (for/list ((i n)) (+ i 1)))
@@ -33,7 +33,8 @@
 ;; Ejercicio 4
 ;; Función que recibe un elemento a, una lista l y decide si a pertenece a l.
 ;; pertenece: a (listof a) -> boolean
-;;(define (pertenece? a l)...)
+;; (define (pertenece? a l)
+     
 
 ;; Ejercicio 5
 ;; Función que recibe una lista l con elementos. Devuelve una lista sin repeticiones con los elementos de l.
