@@ -36,7 +36,7 @@
  (define (pertenece? e l)
       (if (equal? l empty)
       #f
-            (if (= (car l) e)
+            (if (equal? (car l) e)
             #t
             (pertenece? e (cdr l))
             )
