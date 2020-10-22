@@ -87,16 +87,29 @@
 
 ;; Ejercicio 8
 ;; Definición del tipo abstracto de datos Figura
-;;(define-type Figura
-;;  [Circulo ... ]
-;;  [Triangulo ... ]
-;;  [Rectangulo ... ]
-;;  [Cuadrado ...])
+(define-type Figura
+  [Circulo (centro Punto?) (radios number?)]
+  [Triangulo (lado1 Punto?) (lado2 Punto?) (lado3 Punto?)]
+  [Cuadrado (esquinaSizq Punto?) (largo number?)]
+  [Rectangulo (esquinaSizq Punto?) (longBase number?) (longAltura number?)]
+  )
 
 ;; Ejercicio 9
 ;; Función que recibe una figura y calcula su perímetro.
 ;; perimetro: Figura -> number
-;;(define (perimetro fig)...)
+(define (perimetro d)
+  (if (Figura? d)
+  (type-case Figura d
+    [Circulo (c r) (* 2 pi r)]
+    [Triangulo (l1 l2 l3) (+ (distancia l1 l3) (distancia l3 l2) (distancia l2 l1) )]
+  [Cuadrado (e lar)(* 4 lar)]
+  [Rectangulo (e b a) (+ b a)]
+
+
+      )
+(error "El parametro no es de tipo Figura"))
+ )
+
 
 ;; Ejercicio 10
 ;; Función que recibe una figura y calcula su área.
