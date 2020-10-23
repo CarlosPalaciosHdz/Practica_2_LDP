@@ -112,9 +112,32 @@
 
 
 ;; Ejercicio 10
+;; Función auxiliar que recibe tres puntos p q s y calcula la distancia entre el punto p y la recta que pasa por los puntos q y s.
+;; dist-punto-recta: Punto Punto Punto -> number
+(define (dist-punto-recta p q s)
+  (let ([x1 (Punto-x p)]
+        [y1 (Punto-y p)]
+        [x2 (Punto-x q)]
+        [y2 (Punto-y q)]
+        [x3 (Punto-x s)]
+        [y3 (Punto-y s)])
+    (if (= x2 x3)
+        (distancia q s)
+   (/ (abs (+ (- (* (/ (- y3 y2) (- x3 x2)) x1) y1) (- y2 (* x2 (/ (- y3 y2) (- x3 x2)))))) (sqrt (+ 1 (expt (/ (- y3 y2) (- x3 x2)) 2)))))
+ ))
 ;; Función que recibe una figura y calcula su área.
 ;; area: Figura -> number
-;;(define (area fig) ...)
+ (define (area d)
+  (type-case Figura d
+    [Circulo (c r) (* pi (expt r 2))]
+    [Triangulo (l1 l2 l3) (/ (* (distancia l1 l3) (dist-punto-recta l2 l1 l3)) 2)]
+  [Cuadrado (e lar)(expt lar 2)]
+  [Rectangulo (e b a) (* b a)]
+
+
+      )
+
+ )
 
 ;; Punto extra
 ;; Función que nos da el elemento más repetido en una lista. 
